@@ -1,0 +1,14 @@
+{
+	"configurations": [
+		{
+			"preLaunchTask": "${defaultBuildTask}",
+			"postDebugTask": "Stop HTTP Server",
+			"type": "firefox",
+			"request": "launch",
+			"reAttach": true,
+			"name": "Launch Firefox",
+			"url": "http://localhost:5902/index.html",
+			"webRoot": "${workspaceFolder}"
+		}
+	]
+}

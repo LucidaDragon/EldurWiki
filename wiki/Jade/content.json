@@ -1,0 +1,58 @@
+{
+	"Description": "Jade is the minor draconic goddess of the liminal plane.",
+	"Sections": [
+		{
+			"Header": "Jade",
+			"Type": "box",
+			"Sections": [
+				{
+					"Sections": "[image:Jade.png]"
+				},
+				{
+					"Header": "Born",
+					"Sections": "[TheBirthOfDragons]"
+				},
+				{
+					"Header": "Died",
+					"Sections": "[TheBirthOfNix]"
+				},
+				{
+					"Header": "Parents",
+					"Sections": "[Godith]"
+				},
+				{
+					"Header": "Power Tier",
+					"Sections": "Minor"
+				},
+				{
+					"Header": "Aspect",
+					"Sections": "Liminal"
+				},
+				{
+					"Header": "Aspect (Former)",
+					"Sections": "Plants"
+				}
+			]
+		},
+		{
+			"Header": "Appearance",
+			"Sections": ""
+		},
+		{
+			"Header": "Abilities",
+			"Sections": ""
+		},
+		{
+			"Header": "Personality",
+			"Sections": ""
+		},
+		{
+			"Header": "Childhood",
+			"Sections": "Jade was born during [TheBirthOfDragons]."
+		},
+		{
+			"Header": "Adulthood",
+			"Sections": "Jade was killed during [TheBirthOfNix]."
+		}
+	]
+}

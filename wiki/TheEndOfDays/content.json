@@ -1,0 +1,191 @@
+{
+	"Sections": [
+		{
+			"Header": "Armagana Creates Zurcium",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Armagana"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Armagana successfully synthesises Zurcium."
+				}
+			]
+		},
+		{
+			"Header": "Armagana Expands Zurcium Production",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Armagana"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Armagana creates several more ring-shaped stations for mass production of Zurcium."
+				}
+			]
+		},
+		{
+			"Header": "Melior Speaks to Senate",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Sanc't, Techa"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Melior forcefully enters the Imperial Senate and fails in his attempts to reason with the senators."
+				}
+			]
+		},
+		{
+			"Header": "Techa Attacks Armagana's Ring Station",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Armagana, Techa"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Techa attacks and destroys the original ring station created by Armagana."
+				}
+			]
+		},
+		{
+			"Header": "Techa Evacuates Sanc't",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Sanc't, Techa"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Techa evacuates a large number of people from the Sanc't Empire."
+				}
+			]
+		},
+		{
+			"Header": "Armagana Creates Rift Tech",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Armagana"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Armagana creates its first rift drive."
+				}
+			]
+		},
+		{
+			"Header": "Armagana Attacks Sanc't",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Armagana, Sanc't"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Armagana launches an attack on the Sanc't Empire using rift tech."
+				}
+			]
+		},
+		{
+			"Header": "Armagana Attacks Techa",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Armagana, Techa"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Armagana launches an attack on Techa using rift tech."
+				}
+			]
+		},
+		{
+			"Header": "Techa Escapes",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn, Rangar"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Techa"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Techa moves from Overnn to Rangar."
+				}
+			]
+		},
+		{
+			"Header": "Sanc't is Eradicated",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Armagana, Sanc't"
+				},
+				{
+					"Header": "Description",
+					"Sections": "The Sanc't Empire is completely eradicated by Armagana."
+				}
+			]
+		},
+		{
+			"Header": "The Final Day of Overnn",
+			"Sections": [
+				{
+					"Header": "Planes",
+					"Sections": "Overnn"
+				},
+				{
+					"Header": "Factions",
+					"Sections": "Armagana"
+				},
+				{
+					"Header": "Description",
+					"Sections": "Armagana is the only remaining entity in Overnn."
+				}
+			]
+		}
+	]
+}

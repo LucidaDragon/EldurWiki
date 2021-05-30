@@ -1,0 +1,54 @@
+{
+	"Description": "Willseeker is the pure draconic god of destruction.",
+	"Sections": [
+		{
+			"Header": "Willseeker",
+			"Type": "box",
+			"Sections": [
+				{
+					"Sections": "[image:Willseeker.png]"
+				},
+				{
+					"Header": "Born",
+					"Sections": "[TheEnlightenmentAge]"
+				},
+				{
+					"Header": "Died",
+					"Sections": "[TheDarknessRebornAge]"
+				},
+				{
+					"Header": "Parents",
+					"Sections": "Unknown"
+				},
+				{
+					"Header": "Power Tier",
+					"Sections": "Mortal"
+				},
+				{
+					"Header": "Aspect",
+					"Sections": "Destruction (Possessed)"
+				}
+			]
+		},
+		{
+			"Header": "Appearance",
+			"Sections": ""
+		},
+		{
+			"Header": "Abilities",
+			"Sections": ""
+		},
+		{
+			"Header": "Personality",
+			"Sections": ""
+		},
+		{
+			"Header": "Childhood",
+			"Sections": "Willseeker was born during [TheEnlightenmentAge]."
+		},
+		{
+			"Header": "Adulthood",
+			"Sections": "Willseeker was killed during [TheDarknessRebornAge]."
+		}
+	]
+}

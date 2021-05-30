@@ -1,0 +1,54 @@
+{
+	"Description": "Godith is the pure draconic goddess of creation.",
+	"Sections": [
+		{
+			"Header": "Godith",
+			"Type": "box",
+			"Sections": [
+				{
+					"Sections": "[image:Godith.png]"
+				},
+				{
+					"Header": "Born",
+					"Sections": "[TheBirthOfDragons]"
+				},
+				{
+					"Header": "Died",
+					"Sections": "[TheBirthOfNix]"
+				},
+				{
+					"Header": "Parents",
+					"Sections": "Unknown"
+				},
+				{
+					"Header": "Power Tier",
+					"Sections": "Pure"
+				},
+				{
+					"Header": "Aspect",
+					"Sections": "Creation"
+				}
+			]
+		},
+		{
+			"Header": "Appearance",
+			"Sections": ""
+		},
+		{
+			"Header": "Abilities",
+			"Sections": ""
+		},
+		{
+			"Header": "Personality",
+			"Sections": ""
+		},
+		{
+			"Header": "Childhood",
+			"Sections": "Godith was born during [TheBirthOfDragons]."
+		},
+		{
+			"Header": "Adulthood",
+			"Sections": "Godith was killed during [TheBirthOfNix]."
+		}
+	]
+}

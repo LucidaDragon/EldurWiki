@@ -1,0 +1,54 @@
+{
+	"Description": "Nix is the pure draconic god of destruction.",
+	"Sections": [
+		{
+			"Header": "Nix",
+			"Type": "box",
+			"Sections": [
+				{
+					"Sections": "[image:Nix.png]"
+				},
+				{
+					"Header": "Born",
+					"Sections": "[TheBirthOfNix]"
+				},
+				{
+					"Header": "Died",
+					"Sections": "[TheContinuumWar]"
+				},
+				{
+					"Header": "Parents",
+					"Sections": "Unknown"
+				},
+				{
+					"Header": "Power Tier",
+					"Sections": "Pure"
+				},
+				{
+					"Header": "Aspect",
+					"Sections": "Destruction"
+				}
+			]
+		},
+		{
+			"Header": "Appearance",
+			"Sections": ""
+		},
+		{
+			"Header": "Abilities",
+			"Sections": ""
+		},
+		{
+			"Header": "Personality",
+			"Sections": ""
+		},
+		{
+			"Header": "Childhood",
+			"Sections": "Nix was born during [TheBirthOfNix]."
+		},
+		{
+			"Header": "Adulthood",
+			"Sections": "Nix was killed during [TheContinuumWar]."
+		}
+	]
+}
