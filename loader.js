@@ -59,6 +59,10 @@ function CreateLink(url, text)
 	let link = document.createElement("a");
 	link.href = url;
 	if (text !== undefined) link.appendChild(document.createTextNode(AddCamelSpaces(text)));
+	TestRequest(url, function() {}, function()
+	{
+		link.style.color = "red";
+	});
 	return link;
 }
 
@@ -109,6 +113,27 @@ function LoadStyles()
 
 	document.head.appendChild(defaultStyle);
 	document.head.appendChild(pageStyle);
+}
+
+function TestRequest(url, onSuccess, onError)
+{
+	let request = new XMLHttpRequest();
+	request.open("HEAD", url);
+	request.onreadystatechange = function()
+	{
+		if (request.readyState === XMLHttpRequest.DONE)
+		{
+			if (request.status === 0 || (request.status >= 200 && request.status < 400))
+			{
+				onSuccess();
+			}
+			else
+			{
+				onError(request.status);
+			}
+		}
+	};
+	request.send();
 }
 
 function GetRequest(url, onContentReceived, onError)
