@@ -101,11 +101,11 @@ function LoadStyles()
 {
 	let defaultStyle = document.createElement("link");
 	defaultStyle.setAttribute("rel", "stylesheet");
-	defaultStyle.setAttribute("href", "/styles/default.css");
+	defaultStyle.setAttribute("href", "/EldurWiki/styles/default.css");
 
 	let pageStyle = document.createElement("link");
 	pageStyle.setAttribute("rel", "stylesheet");
-	pageStyle.setAttribute("href", `/styles/${wikipage.name}.css`);
+	pageStyle.setAttribute("href", `/EldurWiki/styles/${wikipage.name}.css`);
 
 	document.head.appendChild(defaultStyle);
 	document.head.appendChild(pageStyle);
