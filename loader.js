@@ -92,7 +92,7 @@ function LoadIcon()
 {
 	let icon = document.createElement("link");
 	icon.setAttribute("rel", "icon");
-	icon.setAttribute("href", "/wiki/PageStyles/icon.png");
+	icon.setAttribute("href", "/EldurWiki/styles/icon.png");
 
 	document.head.appendChild(icon);
 }
@@ -147,7 +147,7 @@ function RequestContent(onContentReceived, onError)
 
 function RequestSidebar(onContentReceived, onError)
 {
-	GetRequest("/wiki/sidebar.json", onContentReceived, onError);
+	GetRequest("/EldurWiki/wiki/sidebar.json", onContentReceived, onError);
 }
 
 function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, rootHeaderLink)
@@ -178,7 +178,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 					{
 						let img = document.createElement("img");
 						img.className = "image";
-						img.src = `/wiki/images/${name.split(':', 2)[1]}`;
+						img.src = `/EldurWiki/images/${name.split(':', 2)[1]}`;
 						elements.push(img);
 					}
 					else if (name.toLowerCase().startsWith("sub:"))
@@ -187,7 +187,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 						let subArticleName = name.split(':', 2)[1];
 						elements.push(subRoot);
 
-						GetRequest(`/wiki/${subArticleName}/content.json`, function(subContent)
+						GetRequest(`/EldurWiki/wiki/${subArticleName}/content.json`, function(subContent)
 						{
 							let subArticle = {};
 							subArticle.Header = AddCamelSpaces(subArticleName);
@@ -196,7 +196,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 								subContent.Sections
 							];
 
-							LoadParagraphs(subRoot, subArticle, toc, headerDepth, address, usePTag, `/wiki/${subArticleName}`);
+							LoadParagraphs(subRoot, subArticle, toc, headerDepth, address, usePTag, `/EldurWiki/wiki/${subArticleName}`);
 						},
 						function(code)
 						{
@@ -205,7 +205,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 					}
 					else
 					{
-						elements.push(CreateLink(`/wiki/${name}`, name));
+						elements.push(CreateLink(`/EldurWiki/wiki/${name}`, name));
 					}
 
 					start = i + 1;
@@ -361,7 +361,7 @@ function LoadContent(at)
 
 	let logo = document.createElement("a");
 	logo.className = "logo";
-	logo.href = "/wiki";
+	logo.href = "/EldurWiki/wiki";
 
 	sidebar.appendChild(logo);
 	container.appendChild(sidebar);
