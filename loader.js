@@ -138,60 +138,66 @@ function TestRequest(url, onSuccess, onError)
 	request.send();
 }
 
-function GetRequest(url, onContentReceived, onError, type="json")
+async function GetRequest(url, onContentReceived, onError, type="json")
 {
-	let request = new XMLHttpRequest();
-	request.responseType = type;
-	request.open("GET", url);
-	request.onreadystatechange = function()
+	return new Promise(function(accept, reject)
 	{
-		if (request.readyState === XMLHttpRequest.DONE)
+		let request = new XMLHttpRequest();
+		request.responseType = type;
+		request.open("GET", url);
+		request.onreadystatechange = async function()
 		{
-			if (request.status === 0 || (request.status >= 200 && request.status < 400))
+			if (request.readyState === XMLHttpRequest.DONE)
 			{
-				if (request.response === null)
+				if (request.status === 0 || (request.status >= 200 && request.status < 400))
 				{
-					onError(406);
+					if (request.response === null)
+					{
+						await onError(406);
+						accept();
+					}
+					else
+					{
+						await onContentReceived(request.response);
+						accept();
+					}
 				}
 				else
 				{
-					onContentReceived(request.response);
+					await onError(request.status);
+					accept();
 				}
 			}
-			else
-			{
-				onError(request.status);
-			}
-		}
-	};
-	request.send();
+		};
+		request.send();
+	});
 }
 
-function RequestContent(onContentReceived, onError, source=".")
+async function RequestContent(onContentReceived, onError, source=".")
 {
-	GetRequest(`${source}/content.txt`, function(content)
+	await GetRequest(`${source}/content.txt`, async function(content)
 	{
-		onContentReceived(BuildTextTree(content));
+		await onContentReceived(BuildTextTree(content));
 	},
-	function(code)
+	async function(code)
 	{
-		GetRequest(`${source}/content.json`, onContentReceived, onError)
+		await GetRequest(`${source}/content.json`, onContentReceived, onError)
 	}, "text");
 }
 
-function RequestSidebar(onContentReceived, onError)
+async function RequestSidebar(onContentReceived, onError)
 {
-	GetRequest(WikiPath + "/wiki/sidebar.txt", function(content)
+	await GetRequest(WikiPath + "/wiki/sidebar.txt", async function(content)
 	{
-		onContentReceived(BuildTextTree(content));
+		await onContentReceived(BuildTextTree(content));
 	},
-	function(code)
+	async function(code)
 	{
-		GetRequest(WikiPath + "/wiki/sidebar.json", onContentReceived, onError);
+		await GetRequest(WikiPath + "/wiki/sidebar.json", onContentReceived, onError);
 	}, "text");
 }
 
-function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, rootHeaderLink)
+async function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, rootHeaderLink)
 {
 	if (paragraphs === undefined || paragraphs === null) return;
 
@@ -228,7 +234,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 						let subArticleName = name.split(':', 2)[1];
 						elements.push(subRoot);
 
-						RequestContent(function(subContent)
+						await RequestContent(async function(subContent)
 						{
 							let subArticle = {};
 							subArticle.Header = AddCamelSpaces(subArticleName);
@@ -237,7 +243,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 								subContent.Sections
 							];
 
-							LoadParagraphs(subRoot, subArticle, toc, headerDepth, address, usePTag, `${WikiPath}/wiki/${subArticleName}`);
+							await LoadParagraphs(subRoot, subArticle, toc, headerDepth, address, usePTag, `${WikiPath}/wiki/${subArticleName}`);
 						},
 						function(code)
 						{
@@ -294,7 +300,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 		{
 			address.push(i + 1);
 
-			LoadParagraphs(at, paragraphs[i], toc, headerDepth, address);
+			await LoadParagraphs(at, paragraphs[i], toc, headerDepth, address);
 
 			address.pop();
 		}
@@ -328,7 +334,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 				Children: []
 			};
 
-			LoadParagraphs(at, paragraphs.Sections, subToc, headerDepth + 1, address);
+			await LoadParagraphs(at, paragraphs.Sections, subToc, headerDepth + 1, address);
 
 			if (toc !== undefined && toc.Children !== undefined) toc.Children.push(subToc);
 		}
@@ -366,11 +372,11 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 
 				if (section.Sections === undefined)
 				{
-					LoadParagraphs(value, section, toc, headerDepth, address, false);
+					await LoadParagraphs(value, section, toc, headerDepth, address, false);
 				}
 				else
 				{
-					LoadParagraphs(value, section.Sections, toc, headerDepth, address, false);
+					await LoadParagraphs(value, section.Sections, toc, headerDepth, address, false);
 				}
 				row.appendChild(value);
 
@@ -452,6 +458,7 @@ function BuildTextTree(text, depth=0)
 {
 	let result = { Sections: [] };
 	let elements = (depth === 0 ? [] : result.Sections);
+	let descriptionElementsComplete = false;
 
 	if (!Array.isArray(text)) text = text.split("\n");
 
@@ -466,10 +473,17 @@ function BuildTextTree(text, depth=0)
 
 		if (pragmaMatch !== null)
 		{
-			let key = pragmaMatch[1].toUpperCase();
-			if (key.length > 1) key = key.charAt(0) + key.slice(1).toLowerCase();
+			let key = pragmaMatch[1];
+			let value = pragmaMatch[2];
 
-			result[key] = pragmaMatch[2];
+			if (key === "Use" && value === "SubArticles" && depth === 0)
+			{
+				result.Description = elements;
+				elements = result.Sections;
+				descriptionElementsComplete = true;
+			}
+
+			result[key] = value;
 		}
 		else if (headerDepth > depth)
 		{
@@ -492,7 +506,7 @@ function BuildTextTree(text, depth=0)
 
 	if (result.Sections.length === 1) result.Sections = result.Sections[0];
 
-	if (depth === 0)
+	if (depth === 0 && !descriptionElementsComplete)
 	{
 		result.Description = elements;
 	}
@@ -500,13 +514,18 @@ function BuildTextTree(text, depth=0)
 	return result;
 }
 
-function LoadPageObject(at, content)
+async function LoadPageObject(at, content)
 {
 	wikipage.content = content;
 
-	if (new URLSearchParams(window.location.search).get("viewsource") === "true")
+	let sourceType = new URLSearchParams(window.location.search).get("viewsource");
+	if (sourceType === "text")
 	{
 		at.innerText = TreeToText(content);
+	}
+	else if (sourceType === "json")
+	{
+		at.innerText = TreeToJSON(content);
 	}
 	else
 	{
@@ -515,14 +534,15 @@ function LoadPageObject(at, content)
 		mainHeading.innerText = wikipage.title;
 		at.appendChild(mainHeading);
 
-		LoadParagraphs(at, content.Description, 3);
+		await LoadParagraphs(at, content.Description, 3);
 
 		let toc = document.createElement("ol");
 		toc.className = "box";
+		toc.id = "article-toc"
 		at.appendChild(toc);
 
 		let headers = { Children: [] };
-		LoadParagraphs(at, content.Sections, headers, 2);
+		await LoadParagraphs(at, content.Sections, headers, 2);
 
 		if (headers.Children.length === 0)
 		{
@@ -541,7 +561,7 @@ function LoadPageObject(at, content)
 	}
 }
 
-function LoadContent(at)
+async function LoadContent(at)
 {
 	let container = document.createElement("div");
 	container.className = "container";
@@ -560,11 +580,16 @@ function LoadContent(at)
 	let footer = document.createElement("div");
 	footer.className = "footer";
 
-	let viewSourceLink = document.createElement("a");
-	viewSourceLink.innerText = "View Source";
-	viewSourceLink.href = "./?viewsource=true";
+	let viewTextSource = document.createElement("a");
+	viewTextSource.innerText = "View Text Source";
+	viewTextSource.href = "./?viewsource=text";
 
-	footer.appendChild(viewSourceLink);
+	let viewJSONSource = document.createElement("a");
+	viewJSONSource.innerText = "View JSON Source";
+	viewJSONSource.href = "./?viewsource=json";
+
+	footer.appendChild(viewTextSource);
+	footer.appendChild(viewJSONSource);
 	sidebar.appendChild(logo);
 	container.appendChild(sidebar);
 	container.appendChild(article);
@@ -572,7 +597,7 @@ function LoadContent(at)
 	at.appendChild(container);
 	at = article;
 
-	RequestSidebar(function(sidebarContent)
+	await RequestSidebar(async function(sidebarContent)
 	{
 		if (sidebarContent.Description !== undefined)
 		{
@@ -585,15 +610,15 @@ function LoadContent(at)
 			sidebarContent = sidebarContent.Sections;
 		}
 
-		LoadParagraphs(sidebar, sidebarContent, undefined, undefined, undefined, false);
+		await LoadParagraphs(sidebar, sidebarContent, undefined, undefined, undefined, false);
 	}, function(code)
 	{
 		sidebar.innerText = `An error occured while loading the sidebar. (${code})`
 	});
 
-	RequestContent(function(content)
+	await RequestContent(async function(content)
 	{
-		LoadPageObject(at, content);
+		await LoadPageObject(at, content);
 	},
 	function(code)
 	{
@@ -601,13 +626,13 @@ function LoadContent(at)
 	});
 }
 
-function Load()
+async function Load()
 {
 	LoadPath();
 	LoadTitle();
 	LoadIcon();
 	LoadStyles();
-	LoadContent(document.body);
+	await LoadContent(document.body);
 }
 
 document.addEventListener("DOMContentLoaded", function()
