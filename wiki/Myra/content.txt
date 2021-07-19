@@ -1,0 +1,22 @@
+Myra is a royal mortal dragon.
+
+# Myra
+@Type box
+[image:Myra.png]
+## Born
+[ThePermanentAge]
+## Parents
+[Verismi] (Mother), [Storik] (Father), [Willseeker] (Adoptive Father)
+## Power Tier
+Mortal
+## Aspect
+Trust
+# Appearance
+
+# Abilities
+
+# Personality
+
+# Childhood
+Myra was born during [ThePermanentAge].
+# Adulthood

@@ -1,0 +1,8 @@
+The universal timeline details the events of Eldur as they occur chronologically. The timeline is split into eras to reflect major cultural and physical shifts in the nature of the universe, such as the discovery, modification, or destruction of entire planes of existence. Ages provide additional segmentation of less impactful cultural changes, such as the rise and fall of individual factions and political ideologies.
+
+@MaxHeadingDepth 3
+[sub:Pre-GodithEra]
+[sub:GodithEra]
+[sub:NixEra]
+[sub:Post-NixEra]
+[sub:Post-OvernnEra]

@@ -1,4 +1,6 @@
 const onWikiLoaded = new Event("wikiLoaded");
+const WikiName = "EldurWiki";
+const WikiPath = "/" + WikiName;
 
 function Splice(str, index, count, add)
 {
@@ -96,7 +98,7 @@ function LoadIcon()
 {
 	let icon = document.createElement("link");
 	icon.setAttribute("rel", "icon");
-	icon.setAttribute("href", "/EldurWiki/styles/icon.png");
+	icon.setAttribute("href", WikiPath + "/styles/icon.png");
 
 	document.head.appendChild(icon);
 }
@@ -105,11 +107,11 @@ function LoadStyles()
 {
 	let defaultStyle = document.createElement("link");
 	defaultStyle.setAttribute("rel", "stylesheet");
-	defaultStyle.setAttribute("href", "/EldurWiki/styles/default.css");
+	defaultStyle.setAttribute("href", WikiPath + "/styles/default.css");
 
 	let pageStyle = document.createElement("link");
 	pageStyle.setAttribute("rel", "stylesheet");
-	pageStyle.setAttribute("href", `/EldurWiki/styles/${wikipage.name}.css`);
+	pageStyle.setAttribute("href", `${WikiPath}/styles/${wikipage.name}.css`);
 
 	document.head.appendChild(defaultStyle);
 	document.head.appendChild(pageStyle);
@@ -136,10 +138,10 @@ function TestRequest(url, onSuccess, onError)
 	request.send();
 }
 
-function GetRequest(url, onContentReceived, onError)
+function GetRequest(url, onContentReceived, onError, type="json")
 {
 	let request = new XMLHttpRequest();
-	request.responseType = "json";
+	request.responseType = type;
 	request.open("GET", url);
 	request.onreadystatechange = function()
 	{
@@ -165,6 +167,11 @@ function GetRequest(url, onContentReceived, onError)
 	request.send();
 }
 
+function RequestTextContent(onContentReceived, onError)
+{
+	GetRequest("./content.txt", onContentReceived, onError, "text");
+}
+
 function RequestContent(onContentReceived, onError)
 {
 	GetRequest("./content.json", onContentReceived, onError);
@@ -172,7 +179,14 @@ function RequestContent(onContentReceived, onError)
 
 function RequestSidebar(onContentReceived, onError)
 {
-	GetRequest("/EldurWiki/wiki/sidebar.json", onContentReceived, onError);
+	GetRequest(WikiPath + "/wiki/sidebar.txt", function(content)
+	{
+		onContentReceived(BuildTextTree(content));
+	},
+	function(code)
+	{
+		GetRequest(WikiPath + "/wiki/sidebar.json", onContentReceived, onError);
+	}, "text");
 }
 
 function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, rootHeaderLink)
@@ -203,7 +217,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 					{
 						let img = document.createElement("img");
 						img.className = "image";
-						img.src = `/EldurWiki/images/${name.split(':', 2)[1]}`;
+						img.src = `${WikiPath}/images/${name.split(':', 2)[1]}`;
 						elements.push(img);
 					}
 					else if (name.toLowerCase().startsWith("sub:"))
@@ -212,7 +226,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 						let subArticleName = name.split(':', 2)[1];
 						elements.push(subRoot);
 
-						GetRequest(`/EldurWiki/wiki/${subArticleName}/content.json`, function(subContent)
+						GetRequest(`${WikiPath}/wiki/${subArticleName}/content.json`, function(subContent)
 						{
 							let subArticle = {};
 							subArticle.Header = AddCamelSpaces(subArticleName);
@@ -221,7 +235,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 								subContent.Sections
 							];
 
-							LoadParagraphs(subRoot, subArticle, toc, headerDepth, address, usePTag, `/EldurWiki/wiki/${subArticleName}`);
+							LoadParagraphs(subRoot, subArticle, toc, headerDepth, address, usePTag, `${WikiPath}/wiki/${subArticleName}`);
 						},
 						function(code)
 						{
@@ -230,7 +244,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 					}
 					else
 					{
-						elements.push(CreateLink(`/EldurWiki/wiki/${name}`, name));
+						elements.push(CreateLink(`${WikiPath}/wiki/${name}`, name));
 					}
 
 					start = i + 1;
@@ -297,10 +311,14 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 				at.appendChild(headerTarget);
 			}
 
-			let header = document.createElement(`h${headerDepth}`);
-			header.id = RemoveCamelSpaces(paragraphs.Header);
-			header.innerText = paragraphs.Header;
-			headerTarget.appendChild(header);
+			let header = {};
+			if (paragraphs.Header !== undefined)
+			{
+				header = document.createElement(`h${headerDepth}`);
+				header.id = RemoveCamelSpaces(paragraphs.Header);
+				header.innerText = paragraphs.Header;
+				headerTarget.appendChild(header);
+			}
 
 			let subToc = {
 				Name: paragraphs.Header,
@@ -310,7 +328,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 
 			LoadParagraphs(at, paragraphs.Sections, subToc, headerDepth + 1, address);
 
-			toc.Children.push(subToc);
+			if (toc !== undefined) toc.Children.push(subToc);
 		}
 		else if (paragraphs.Type === "box")
 		{
@@ -343,7 +361,15 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 				let value = document.createElement("td");
 				value.className = "box_row_value";
 				value.colSpan = (section.Header === undefined) ? 2 : 1;
-				LoadParagraphs(value, section.Sections, toc, headerDepth, address, false);
+
+				if (section.Sections === undefined)
+				{
+					LoadParagraphs(value, section, toc, headerDepth, address, false);
+				}
+				else
+				{
+					LoadParagraphs(value, section.Sections, toc, headerDepth, address, false);
+				}
 				row.appendChild(value);
 
 				innerBox.appendChild(row);
@@ -354,10 +380,8 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 	}
 }
 
-function LoadTOC(toc, headers, depth)
+function LoadTOC(toc, headers, depth=0)
 {
-	if (depth === undefined) depth = 0;
-
 	for (let i = 0; i < headers.Children.length; i++)
 	{
 		if (wikipage.content.MaxHeadingDepth === undefined || depth < wikipage.content.MaxHeadingDepth)
@@ -373,6 +397,141 @@ function LoadTOC(toc, headers, depth)
 	}
 }
 
+function TreeToJSON(tree)
+{
+	if (tree === undefined) tree = wikipage.content;
+
+	return JSON.stringify(tree);
+}
+
+function TreeToText(tree, depth=0)
+{
+	if (tree === undefined && depth === 0) tree = wikipage.content;
+
+	let result = "";
+
+	if (typeof tree === "string")
+	{
+		result = tree + "\n";
+	}
+	else if (Array.isArray(tree))
+	{
+		for (let i = 0; i < tree.length; i++)
+		{
+			result += TreeToText(tree[i], depth);
+		}
+	}
+	else
+	{
+		if (depth === 0 && tree.Description !== undefined) result += TreeToText(tree.Description, depth + 1) + "\n";
+		
+		if (tree.Header !== undefined)
+		{
+			let headerPrefix = "";
+			for (let i = 0; i < depth; i++) headerPrefix += "#";
+			result += `${headerPrefix} ${tree.Header}\n`;
+		}
+
+		for (const [key, value] of Object.entries(tree))
+		{
+			if (key !== "Header" && key !== "Sections" && (depth !== 0 || key !== "Description"))
+			{
+				result += `@${key} ${value}\n`;
+			}
+		}
+		
+		if (tree.Sections !== undefined) result += TreeToText(tree.Sections, depth + 1);
+	}
+
+	return result;
+}
+
+function BuildTextTree(text, depth=0)
+{
+	let result = { Sections: [] };
+	let elements = (depth === 0 ? [] : result.Sections);
+
+	if (!Array.isArray(text)) text = text.split("\n");
+
+	while (text.length > 0)
+	{
+		let line = text.shift().trim();
+
+		if (line.length === 0) continue;
+
+		let headerDepth = line.match(/^\#*/)[0].length;
+		let pragmaMatch = line.match(/^@(\w+)\s+(\w+)$/);
+
+		if (pragmaMatch !== null)
+		{
+			let key = pragmaMatch[1].toUpperCase();
+			if (key.length > 1) key = key.charAt(0) + key.slice(1).toLowerCase();
+
+			result[key] = pragmaMatch[2];
+		}
+		else if (headerDepth > depth)
+		{
+			let childHeader = line.substr(headerDepth + 1, line.length - (headerDepth + 1));
+			let childSection = BuildTextTree(text, depth + 1);
+			childSection.Header = childHeader;
+			result.Sections.push(childSection);
+		}
+		else if (headerDepth > 0 && headerDepth <= depth)
+		{
+			text.unshift(line);
+			if (result.Sections.length === 1) result.Sections = result.Sections[0];
+			return result;
+		}
+		else
+		{
+			elements.push(line);
+		}
+	}
+
+	if (result.Sections.length === 1) result.Sections = result.Sections[0];
+
+	if (depth === 0)
+	{
+		result.Description = elements;
+	}
+
+	return result;
+}
+
+function LoadPageObject(at, content)
+{
+	wikipage.content = content;
+
+	let mainHeading = document.createElement("h1");
+	mainHeading.className = "main_heading"
+	mainHeading.innerText = wikipage.title;
+	at.appendChild(mainHeading);
+
+	LoadParagraphs(at, content.Description, 3);
+
+	let toc = document.createElement("ol");
+	toc.className = "box";
+	at.appendChild(toc);
+
+	let headers = { Children: [] };
+	LoadParagraphs(at, content.Sections, headers, 2);
+
+	if (headers.Children.length === 0)
+	{
+		at.removeChild(toc);
+	}
+	else
+	{
+		let tocTitle = document.createElement("p");
+		tocTitle.className = "box_title";
+		tocTitle.innerText = "Contents";
+		toc.appendChild(tocTitle);
+		LoadTOC(toc, headers);
+	}
+
+	document.dispatchEvent(onWikiLoaded);
+}
+
 function LoadContent(at)
 {
 	let container = document.createElement("div");
@@ -386,7 +545,8 @@ function LoadContent(at)
 
 	let logo = document.createElement("a");
 	logo.className = "logo";
-	logo.href = "/EldurWiki/wiki";
+	logo.href = WikiPath + "/wiki";
+	logo.style.backgroundImage = "url(" + WikiPath + "/styles/logo.png)";
 
 	sidebar.appendChild(logo);
 	container.appendChild(sidebar);
@@ -394,47 +554,39 @@ function LoadContent(at)
 	at.appendChild(container);
 	at = article;
 
-	RequestContent(function(content)
+	RequestSidebar(function(sidebarContent)
 	{
-		wikipage.content = content;
-
-		RequestSidebar(function(sidebarContent)
+		if (sidebarContent.Description !== undefined)
 		{
-			LoadParagraphs(sidebar, sidebarContent, undefined, undefined, undefined, false);
-		}, function(code){});
-
-		let mainHeading = document.createElement("h1");
-		mainHeading.className = "main_heading"
-		mainHeading.innerText = wikipage.title;
-		at.appendChild(mainHeading);
-
-		LoadParagraphs(at, content.Description, 3);
-
-		let toc = document.createElement("ol");
-		toc.className = "box";
-		at.appendChild(toc);
-
-		let headers = { Children: [] };
-		LoadParagraphs(at, content.Sections, headers, 2);
-
-		if (headers.Children.length === 0)
-		{
-			at.removeChild(toc);
-		}
-		else
-		{
-			let tocTitle = document.createElement("p");
-			tocTitle.className = "box_title";
-			tocTitle.innerText = "Contents";
-			toc.appendChild(tocTitle);
-			LoadTOC(toc, headers);
+			sidebarContent.Sections = sidebarContent.Description;
+			sidebarContent.Description = undefined;
 		}
 
-		document.dispatchEvent(onWikiLoaded);
+		if (sidebarContent.Sections !== undefined)
+		{
+			sidebarContent = sidebarContent.Sections;
+		}
+
+		LoadParagraphs(sidebar, sidebarContent, undefined, undefined, undefined, false);
+	}, function(code)
+	{
+		sidebar.innerText = `An error occured while loading the sidebar. (${code})`
+	});
+
+	RequestTextContent(function(content)
+	{
+		LoadPageObject(at, BuildTextTree(content));
 	},
 	function(code)
 	{
-		at.innerText = `An error occured while loading the page. (${code})`
+		RequestContent(function(content)
+		{
+			LoadPageObject(at, content);
+		},
+		function(code)
+		{
+			at.innerText = `An error occured while loading the page. (${code})`
+		});
 	});
 }
 

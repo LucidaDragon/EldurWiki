@@ -1,0 +1,25 @@
+Nix is the pure draconic god of destruction.
+
+# Nix
+@Type box
+[image:Nix.png]
+## Born
+[TheBirthOfNix]
+## Died
+[TheContinuumWar]
+## Parents
+Unknown
+## Power Tier
+Pure
+## Aspect
+Destruction
+# Appearance
+
+# Abilities
+
+# Personality
+
+# Childhood
+Nix was born during [TheBirthOfNix].
+# Adulthood
+Nix was killed during [TheContinuumWar].
