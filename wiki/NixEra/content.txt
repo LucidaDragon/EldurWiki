@@ -1,5 +1,7 @@
 The Nix era designates the death of Godith and the creation of the Conduit plane, which becomes the new enabler of magic for the Eldur universe.
 
+@MaxHeadingDepth 3
+@Use SubArticles
 [sub:TheKingdomsAge]
 [sub:TheDarkAge]
 [sub:TheAgeOfUnrest]

@@ -1,5 +1,7 @@
 The Post-Nix era signifies the dispersal of both dragons and Vonn across the planes and the discovery of Upper Rangar.
 
+@MaxHeadingDepth 3
+@Use SubArticles
 [sub:TheNewAge]
 [sub:TheEnlightenmentAge]
 [sub:TheCrossroadsAge]

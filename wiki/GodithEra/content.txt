@@ -1,5 +1,7 @@
 The Godith era marks the arrival of Godith into Eldur and the discovery of both the Rangar plane and the Dream plane. It also marks the introduction of magic to the universe.
 
+@MaxHeadingDepth 3
+@Use SubArticles
 [sub:TheBirthOfDragons]
 [sub:TheMagicAge]
 [sub:TheFirstMagicWar]
