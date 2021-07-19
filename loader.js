@@ -167,14 +167,16 @@ function GetRequest(url, onContentReceived, onError, type="json")
 	request.send();
 }
 
-function RequestTextContent(onContentReceived, onError)
+function RequestContent(onContentReceived, onError, source=".")
 {
-	GetRequest("./content.txt", onContentReceived, onError, "text");
-}
-
-function RequestContent(onContentReceived, onError)
-{
-	GetRequest("./content.json", onContentReceived, onError);
+	GetRequest(`${source}/content.txt`, function(content)
+	{
+		onContentReceived(BuildTextTree(content));
+	},
+	function(code)
+	{
+		GetRequest(`${source}/content.json`, onContentReceived, onError)
+	}, "text");
 }
 
 function RequestSidebar(onContentReceived, onError)
@@ -226,7 +228,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 						let subArticleName = name.split(':', 2)[1];
 						elements.push(subRoot);
 
-						GetRequest(`${WikiPath}/wiki/${subArticleName}/content.json`, function(subContent)
+						RequestContent(function(subContent)
 						{
 							let subArticle = {};
 							subArticle.Header = AddCamelSpaces(subArticleName);
@@ -240,7 +242,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 						function(code)
 						{
 							subRoot.appendChild(document.createTextNode(`[Could not load sub-article \"${subArticleName}\" (Error ${code})]`));
-						});
+						}, `${WikiPath}/wiki/${subArticleName}`);
 					}
 					else
 					{
@@ -328,7 +330,7 @@ function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag, root
 
 			LoadParagraphs(at, paragraphs.Sections, subToc, headerDepth + 1, address);
 
-			if (toc !== undefined) toc.Children.push(subToc);
+			if (toc !== undefined && toc.Children !== undefined) toc.Children.push(subToc);
 		}
 		else if (paragraphs.Type === "box")
 		{
@@ -502,34 +504,41 @@ function LoadPageObject(at, content)
 {
 	wikipage.content = content;
 
-	let mainHeading = document.createElement("h1");
-	mainHeading.className = "main_heading"
-	mainHeading.innerText = wikipage.title;
-	at.appendChild(mainHeading);
-
-	LoadParagraphs(at, content.Description, 3);
-
-	let toc = document.createElement("ol");
-	toc.className = "box";
-	at.appendChild(toc);
-
-	let headers = { Children: [] };
-	LoadParagraphs(at, content.Sections, headers, 2);
-
-	if (headers.Children.length === 0)
+	if (new URLSearchParams(window.location.search).get("viewsource") === "true")
 	{
-		at.removeChild(toc);
+		at.innerText = TreeToText(content);
 	}
 	else
 	{
-		let tocTitle = document.createElement("p");
-		tocTitle.className = "box_title";
-		tocTitle.innerText = "Contents";
-		toc.appendChild(tocTitle);
-		LoadTOC(toc, headers);
-	}
+		let mainHeading = document.createElement("h1");
+		mainHeading.className = "main_heading"
+		mainHeading.innerText = wikipage.title;
+		at.appendChild(mainHeading);
 
-	document.dispatchEvent(onWikiLoaded);
+		LoadParagraphs(at, content.Description, 3);
+
+		let toc = document.createElement("ol");
+		toc.className = "box";
+		at.appendChild(toc);
+
+		let headers = { Children: [] };
+		LoadParagraphs(at, content.Sections, headers, 2);
+
+		if (headers.Children.length === 0)
+		{
+			at.removeChild(toc);
+		}
+		else
+		{
+			let tocTitle = document.createElement("p");
+			tocTitle.className = "box_title";
+			tocTitle.innerText = "Contents";
+			toc.appendChild(tocTitle);
+			LoadTOC(toc, headers);
+		}
+
+		document.dispatchEvent(onWikiLoaded);
+	}
 }
 
 function LoadContent(at)
@@ -548,9 +557,18 @@ function LoadContent(at)
 	logo.href = WikiPath + "/wiki";
 	logo.style.backgroundImage = "url(" + WikiPath + "/styles/logo.png)";
 
+	let footer = document.createElement("div");
+	footer.className = "footer";
+
+	let viewSourceLink = document.createElement("a");
+	viewSourceLink.innerText = "View Source";
+	viewSourceLink.href = "./?viewsource=true";
+
+	footer.appendChild(viewSourceLink);
 	sidebar.appendChild(logo);
 	container.appendChild(sidebar);
 	container.appendChild(article);
+	container.appendChild(footer);
 	at.appendChild(container);
 	at = article;
 
@@ -573,20 +591,13 @@ function LoadContent(at)
 		sidebar.innerText = `An error occured while loading the sidebar. (${code})`
 	});
 
-	RequestTextContent(function(content)
+	RequestContent(function(content)
 	{
-		LoadPageObject(at, BuildTextTree(content));
+		LoadPageObject(at, content);
 	},
 	function(code)
 	{
-		RequestContent(function(content)
-		{
-			LoadPageObject(at, content);
-		},
-		function(code)
-		{
-			at.innerText = `An error occured while loading the page. (${code})`
-		});
+		at.innerText = `An error occured while loading the page. (${code})`
 	});
 }
 

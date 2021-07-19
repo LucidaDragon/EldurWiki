@@ -132,3 +132,13 @@ li {
 	border-top-width: 0;
 	border-right-width: 0;
 }
+
+.footer {
+	margin-left: 11em;
+	padding: 1.25em 1.5em 1.5em 1.5em;
+}
+
+.footer * {
+	font-family: sans-serif;
+	font-size: 0.875em;
+}
