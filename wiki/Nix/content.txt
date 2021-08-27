@@ -1,4 +1,4 @@
-Nix is the pure draconic god of destruction.
+Nix is the pure draconic god of destruction. He appears to be similar to the dragons born of [Godith]. Despite this, his unexplained appearance, unique abilities, murder of Godith, and hatred of other dragons has earned him the title of "The Anti-Dragon".
 
 # Nix
 @Type box
@@ -14,12 +14,12 @@ Pure
 ## Aspect
 Destruction
 # Appearance
-
+Nix has a dark gray body and a light gray belly. His membrane wings and spines are an even darker gray, while his horns and talons are white. Unlike the majority of dragons, Nix has a horn protruding from the top of his snout. Similar to Godith, his eyes glow purple.
 # Abilities
-
+Nix has an aura that causes dragon magic to be absorbed and nullified. The range of his aura is directly effected by the amount of power he can absorb, which can lead to a snowballing effect as his aura expands. He is also rendered physically invulnerable by the [Permium] that his body is made of.
 # Personality
-
+Nix is a malevolent and controlling dragon. He hates the dragons born of Godith, seeing their magic as both an unnatural occurrence and a sign of weakness. He prefers to pull strings to get what he wants done, but is no stranger to using physical violence and threats to get his way.
 # Childhood
-Nix was born during [TheBirthOfNix].
+Nix first appeared during [TheBirthOfNix]. Little is known about where he came from.
 # Adulthood
 Nix was killed during [TheContinuumWar].
