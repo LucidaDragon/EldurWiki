@@ -1,5 +1,5 @@
 [Home]
-[Plane]
+[Planes]
 [UniversalTimeline]
 [Category$Factions]
 [Category$Dragons]
