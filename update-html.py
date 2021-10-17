@@ -34,14 +34,15 @@ def FindImageURI(lines):
 	return ImageHost + imageName
 
 def GetHTML(title, description, imageURI):
-	title += " | Eldur Wiki"
 	titleMeta = "<meta name=\"og:title\" content=\"" + title + "\">"
-	authorMeta = "<meta name=\"author\" content=\"Lucida Dragon\">"
+	authorMeta = "<meta name=\"author\" content=\"Lucida Dragon\"><meta name=\"article:author\" content=\"Lucida Dragon\">"
+	siteNameMeta = "<meta name=\"og:site_name\" content=\"Eldur Wiki\">"
+	typeMeta = "<meta name=\"og:type\" content=\"article\">"
 	descriptionMeta = ""
-	if description != None: descriptionMeta = "<meta name=\"description\" content=\"" + description + "\">"
+	if description != None: descriptionMeta = "<meta name=\"description\" content=\"" + description + "\"><meta name=\"og:description\" content=\"" + description + "\">"
 	imageMeta = ""
 	if imageURI != None: imageMeta = "<meta name=\"og:image\" content=\"" + imageURI + "\">"
-	return "<!DOCTYPE html><html><head>" + CharSet + titleMeta + authorMeta + descriptionMeta + imageMeta + ScriptTag + "</head><body>" + NoScript + "</body></html>"
+	return "<!DOCTYPE html><html><head>" + CharSet + siteNameMeta + titleMeta + typeMeta + authorMeta + descriptionMeta + imageMeta + ScriptTag + "</head><body>" + NoScript + "</body></html>"
 
 for subdir, dirs, files in os.walk("./wiki"):
 	for file in files:
