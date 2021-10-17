@@ -1,5 +1,7 @@
-import os
+import os, re
 
+ImageHost = "https://lucidadragon.github.io/EldurWiki/images/"
+CharSet = "<meta charset=\"UTF-8\">"
 ScriptTag = "<script src=\"/EldurWiki/loader.js\"></script>"
 NoScript = "<noscript>JavaScript is required to load this page.</noscript>"
 
@@ -21,8 +23,25 @@ def AddCamelSpaces(s):
 		i += 1
 	return s
 
-def GetHTML(title, description):
-	return "<!DOCTYPE html><html><head><title>" + title + " | Eldur Wiki</title><meta charset=\"UTF-8\"><meta name=\"author\" content=\"Lucida Dragon\"><meta name=\"description\" content=\"" + description + "\">" + ScriptTag + "</head><body>" + NoScript + "</body></html>"
+def FindImageURI(lines):
+	imageName = None
+	for line in lines:
+		match = re.match("\\[image\\:([^\\]]+)\\]", line)
+		if match != None:
+			imageName = match[1]
+			break
+	if imageName == None: return None
+	return ImageHost + imageName
+
+def GetHTML(title, description, imageURI):
+	title += " | Eldur Wiki"
+	titleMeta = "<meta name=\"og:title\" content=\"" + title + "\">"
+	authorMeta = "<meta name=\"author\" content=\"Lucida Dragon\">"
+	descriptionMeta = ""
+	if description != None: descriptionMeta = "<meta name=\"description\" content=\"" + description + "\">"
+	imageMeta = ""
+	if imageURI != None: imageMeta = "<meta name=\"og:image\" content=\"" + imageURI + "\">"
+	return "<!DOCTYPE html><html><head>" + CharSet + titleMeta + authorMeta + descriptionMeta + imageMeta + ScriptTag + "</head><body>" + NoScript + "</body></html>"
 
 for subdir, dirs, files in os.walk("./wiki"):
 	for file in files:
@@ -32,12 +51,13 @@ for subdir, dirs, files in os.walk("./wiki"):
 			if ScriptTag in stream.read():
 				stream.close()
 				content = open(os.path.join(subdir, "content.txt"), mode="r")
-				descLine = content.readline().strip()
+				lines = content.readlines()
+				descLine = lines[0].strip()
 				content.close()
-				if not descLine[0].isalpha(): descLine = ""
+				if not descLine[0].isalpha(): descLine = None
 				stream = open(path, mode="w")
 				name = AddCamelSpaces(os.path.basename(subdir))
 				if name == "wiki": name = "Home"
-				stream.write(GetHTML(name, descLine))
+				stream.write(GetHTML(name, descLine, FindImageURI(lines)))
 				stream.close()
 			stream.close()
