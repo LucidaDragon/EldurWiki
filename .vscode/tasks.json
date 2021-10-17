@@ -2,10 +2,16 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "Update HTML Sources",
+			"type": "shell",
+			"command": "python update-html.py"
+		},
+		{
 			"label": "Launch HTTP Server",
 			"type": "shell",
 			"command": "cd ./.. | cmd.exe /c start python -m http.server 5902",
 			"problemMatcher": [],
+			"dependsOn": ["Update HTML Sources"],
 			"group": {
 				"kind": "build",
 				"isDefault": true
