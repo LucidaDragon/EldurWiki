@@ -4,5 +4,4 @@ The Godith era marks the arrival of Godith into Eldur and the discovery of both 
 @Use SubArticles
 [sub:TheBirthOfDragons]
 [sub:TheMagicAge]
-[sub:TheFirstMagicWar]
 [sub:TheBirthOfNix]
