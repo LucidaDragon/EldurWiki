@@ -2,10 +2,10 @@ Planes are different parts of the Eldur universe that can not be traveled betwee
 
 @MaxHeadingDepth 3
 @Use SubArticles
-[sub:OvernnPlane]
+[sub:Overnn]
 [sub:Subspace]
-[sub:RangarPlane]
-[sub:DreamPlane]
-[sub:ConduitPlane]
-[sub:StasisPlane]
-[sub:LiminalPlane]
+[sub:Rangar]
+[sub:Dream]
+[sub:Conduit]
+[sub:Stasis]
+[sub:Liminal]
