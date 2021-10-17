@@ -20,6 +20,6 @@ Nix has an aura that causes dragon magic to be absorbed and nullified. The range
 # Personality
 Nix is a malevolent and controlling dragon. He hates the dragons born of Godith, seeing their magic as both an unnatural occurrence and a sign of weakness. He prefers to pull strings to get what he wants done, but is no stranger to using physical violence and threats to get his way.
 # Childhood
-Nix first appeared during [TheBirthOfNix]. Little is known about where he came from.
+Nix first appeared during [TheBirthOfNix]. It is unknown where he came from, however he claims that the purpose of his existence is to rid the universe of draconic influence.
 # Adulthood
 Nix was killed during [TheContinuumWar].
