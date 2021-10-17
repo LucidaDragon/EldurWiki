@@ -1,10 +1,10 @@
-Godith is the pure draconic goddess of creation.
+Godith is the pure draconic goddess of creation. She is the mother of all the draconic gods and is the common ancestor for all dragons in the Eldur universe with the exception of Nix. She is also responsible for gifting the Vonn with souls and the creation of the [Conduit].
 
 # Godith
 @Type box
 [image:Godith.png]
 ## Born
-[TheBirthOfDragons]
+Unknown
 ## Died
 [TheBirthOfNix]
 ## Parents
@@ -14,12 +14,12 @@ Pure
 ## Aspect
 Creation
 # Appearance
-
+Godith has a light grey scaled body, a belly and feathered wings that are purple, and fur along her spine, wings, and legs that is a darker shade of purple. Her horns and talons are black, and her entire body appears to be filled with stars.
 # Abilities
-
+Godith's greatest power is her ability to gift souls to creatures. She mainly uses it to give her children everlasting life, with the notable exception of gifting souls to the [Vonn] after having accidentally displaced them. She also has a far-reaching aura of contentedness that she uses to maintain peace among her children, and is capable of pulling large amounts of Arcanium from the [Dream] plane.
 # Personality
-
+Godith is a very caring dragoness who has a strong sense of selflessness. She loves all of her children greatly and equally, and would do anything to ensure they lived long and happy lives.
 # Childhood
-Godith was born during [TheBirthOfDragons].
+Godith was born before [TheBirthOfDragons]. It is not known who she was born to, but it is known that she came from deep within the [DreamPlane].
 # Adulthood
-Godith was killed during [TheBirthOfNix].
+Godith spent her entire adult life giving birth to and raising the dragon gods, which she did with great passion and love. She was killed during [TheBirthOfNix] while trying to defend her eggs from [Nix]. Her final act was to create the [Conduit] so that her children could continue to draw power from the [Dream] plane. Her death marked the end of the [GodithEra] and beginning of the [NixEra].
