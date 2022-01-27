@@ -1,4 +1,6 @@
+[AcrineSmugglers]
 [Akarii]
+[AssetHoldersLiberation]
 [Armagana]
 [Denaie]
 [Farin]
@@ -16,4 +18,5 @@
 [QueenVevela'sDomain]
 [QueenZeline'sDomain]
 [Sanc'tEmpire]
+[SteelKeepers]
 [Techa]
