@@ -2,9 +2,16 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "Create Article From Template",
+			"type": "shell",
+			"command": "python new-template.py",
+			"problemMatcher": []
+		},
+		{
 			"label": "Update HTML Sources",
 			"type": "shell",
-			"command": "python update-html.py"
+			"command": "python update-html.py",
+			"problemMatcher": []
 		},
 		{
 			"label": "Launch HTTP Server",
@@ -20,7 +27,8 @@
 		{
 			"label": "Stop HTTP Server",
 			"type": "shell",
-			"command": "cmd.exe /c taskkill /IM python.exe"
+			"command": "cmd.exe /c taskkill /IM python.exe",
+			"problemMatcher": []
 		}
 	]
 }

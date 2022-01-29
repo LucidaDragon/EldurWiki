@@ -1,0 +1,25 @@
+(Introduction description including name, power tier, and role or aspect.)
+
+# [template:article_name]
+@Type box
+[image:[template:article_name].png]
+## Born
+(Link to the age they were born in.)
+## Died
+(Link to the age they died in. Remove if not applicable.)
+## Parents
+(Links to parents and adoptive family.)
+## Power Tier
+(One of the following: Mortal, Minor, Major, or Pure.)
+## Aspect
+(Their magic aspect. See [DragonMagic].)
+# Appearance
+(Physical description including body color, belly color, wing color, eye color, horn and talon color, and fur or spine color if applicable.)
+# Abilities
+(A description of what their aspect allows them to do.)
+# Personality
+(A description of their personality, including a one-word descriptor, what the people around them think of them, one thing they take joy in and one regret they have.)
+# Childhood
+(A summary of their childhood, starting with the age they were born in and including any major events.)
+# Adulthood
+(A summary of their adulthood, including any major events and ending with the age they died in (if applicable).)

@@ -1,0 +1,45 @@
+(Summary of population, location, and purpose.)
+
+# [template:article_name]
+@Type box
+[image:[template:article_name]FlagSquare.png]
+## Population
+(Approx. number of citizens or group members.)
+## Government
+(Type or structure of government or group, if applicable.)
+## Capital
+(Capital location, if applicable.)
+## Leader(s)
+(Leaders or dominant decision makers, if applicable.)
+## Militarization
+(Percent of population that enters combat for the faction.)
+## Peak Offensive Technology
+(Most powerful, wide-spread, or notable offensive technology. If inherited, also include self-made technology if applicable.)
+## Peak Defensive Technology
+(Most powerful, wide-spread, or notable defensive technology. If inherited, also include self-made technology if applicable.)
+## Peak Transport Technology
+(Most powerful, wide-spread, or notable transport technology. If inherited, also include self-made technology if applicable.)
+## Peak Manufacturing Technology
+(Most powerful, wide-spread, or notable manufacturing technology. If inherited, also include self-made technology if applicable.)
+## Peak Agriculture Technology
+(Most powerful, wide-spread, or notable agriculture technology. If inherited, also include self-made technology if applicable.)
+# Founding
+# Government & Politics
+## Law
+## Foreign Relations and Military
+## Territory
+# Economy
+## Internal
+## Imports
+## Exports
+# Demographics
+## Ethnicity
+## Health
+## Education
+## Languages
+# Culture
+## Iconography
+## Literature
+## Visual Arts
+## Music
+## Sports
