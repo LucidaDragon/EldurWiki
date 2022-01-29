@@ -53,12 +53,14 @@ for subdir, dirs, files in os.walk("./wiki"):
 				stream.close()
 				content = open(os.path.join(subdir, "content.txt"), mode="r")
 				lines = content.readlines()
-				descLine = lines[0].strip()
 				content.close()
-				if not descLine[0].isalpha(): descLine = None
-				stream = open(path, mode="w")
-				name = AddCamelSpaces(os.path.basename(subdir))
-				if name == "wiki": name = "Home"
-				stream.write(GetHTML(name, descLine, FindImageURI(lines)))
+				if len(lines) > 0:
+					descLine = lines[0].strip()
+					if not descLine[0].isalpha(): descLine = None
+					name = AddCamelSpaces(os.path.basename(subdir))
+					if name == "wiki": name = "Home"
+					stream = open(path, mode="w")
+					stream.write(GetHTML(name, descLine, FindImageURI(lines)))
+					stream.close()
+			else:
 				stream.close()
-			stream.close()
