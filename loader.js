@@ -1,3 +1,24 @@
+/*
+	The MIT License
+
+	Copyright (c) 2022 Lucida Dragon
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+	and associated documentation files (the "Software"), to deal in the Software without restriction,
+	including without limitation the rights to use, copy, modify, merge, publish, distribute,
+	sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all copies or
+	substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+	NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+	DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
 const onWikiLoaded = new Event("wikiLoaded");
 const WikiName = "EldurWiki";
 const WikiPath = "/" + WikiName;
@@ -56,11 +77,11 @@ function EscapeHtml(unsafe)
         .replace(/'/g, "&#039;");
 }
 
-function CreateLink(url, text)
+function CreateLink(url, text, noNameFormat)
 {
 	let link = document.createElement("a");
 	link.href = url;
-	if (text !== undefined) link.appendChild(document.createTextNode(AddCamelSpaces(text)));
+	if (text !== undefined) link.appendChild(document.createTextNode(noNameFormat ? text : AddCamelSpaces(text)));
 	TestRequest(url, function() {}, function()
 	{
 		link.style.color = "red";
@@ -227,6 +248,13 @@ async function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag
 						img.className = "image";
 						img.src = `${WikiPath}/images/${name.split(':', 2)[1]}`;
 						elements.push(img);
+					}
+					else if (name.toLowerCase().startsWith("ext:"))
+					{
+						let parts = name.split(':')
+						if (parts.length < 3) parts.push("")
+						if (parts.length > 3) for (let j = 3; j < parts.length; j++) parts[2] += `:${parts[j]}`
+						elements.push(CreateLink(parts[2], parts[1], true));
 					}
 					else if (name.toLowerCase().startsWith("sub:"))
 					{

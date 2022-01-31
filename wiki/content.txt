@@ -1,7 +1,10 @@
-Welcome to the Eldur Wiki!
+Welcome to the Eldur Wiki! All public information about the Eldur Universe is catalogued here for ease of access.
 
-# Information
-More information will be available soon.
+# Contributing
+If you want to contribute to the Eldur Wiki, please visit the wiki's [ext:GitHub repository:https://github.com/LucidaDragon/EldurWiki] and create a pull request. To have the best chance of having your pull request accepted it is recommended that you take a look around the wiki to get a sense of how articles are written before adding your own. Changes to lore or known canon will not be accepted unless they have been documented publicly as being retconned. Speculative passages in articles are discouraged but not strictly forbidden.
 
-## Universal Timeline
-The [UniversalTimeline] shows the events of Eldur in chronological order.
+# License
+The wiki engine code is made available under the [ext:MIT License:https://mit-license.org]. The wiki engine can be found in [ext:loader.js:../loader.js].
+
+# Copyright
+All other content on the wiki, including articles, images, and stories, are covered under [ext:CC BY-NC-SA 4.0:https://creativecommons.org/licenses/by-nc-sa/4.0] unless explicitly stated otherwise.
