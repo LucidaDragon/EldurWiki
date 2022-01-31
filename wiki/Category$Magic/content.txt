@@ -1,0 +1,3 @@
+[DragonMagic]
+[SoulMagic]
+[VonnMagic]

@@ -3,4 +3,4 @@
 [UniversalTimeline]
 [Category$Factions]
 [Category$Dragons]
-[DragonMagic]
+[Category$Magic]
