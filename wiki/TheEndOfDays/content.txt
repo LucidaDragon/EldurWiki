@@ -1,77 +1,77 @@
 # Armagana Creates Zurcium
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Armagana
+[Armagana]
 ## Description
-Armagana successfully synthesises Zurcium.
+Armagana successfully synthesises [Zurcium].
 # Armagana Expands Zurcium Production
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Armagana
+[Armagana]
 ## Description
-Armagana creates several more ring-shaped stations for mass production of Zurcium.
+Armagana creates several more ring-shaped stations for mass production of [Zurcium].
 # Melior Speaks to Senate
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Sanc't, Techa
+[Sanc't], [Techa]
 ## Description
-Melior forcefully enters the Imperial Senate and fails in his attempts to reason with the senators.
+[Melior] forcefully enters the Imperial Senate and fails in his attempts to reason with the senators about the threat of [Armagana].
 # Techa Attacks Armagana's Ring Station
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Armagana, Techa
+[Armagana], [Techa]
 ## Description
 Techa attacks and destroys the original ring station created by Armagana.
 # Techa Evacuates Sanc't
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Sanc't, Techa
+[Sanc't], [Techa]
 ## Description
 Techa evacuates a large number of people from the Sanc't Empire.
 # Armagana Creates Rift Tech
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Armagana
+[Armagana]
 ## Description
 Armagana creates its first rift drive.
 # Armagana Attacks Sanc't
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Armagana, Sanc't
+[Armagana], [Sanc't]
 ## Description
 Armagana launches an attack on the Sanc't Empire using rift tech.
 # Armagana Attacks Techa
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Armagana, Techa
+[Armagana], [Techa]
 ## Description
 Armagana launches an attack on Techa using rift tech.
 # Techa Escapes
 ## Planes
-Overnn, Rangar
+[Overnn], [Rangar]
 ## Factions
-Techa
+[Techa]
 ## Description
 Techa moves from Overnn to Rangar.
 # Sanc't is Eradicated
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Armagana, Sanc't
+[Armagana], [Sanc't]
 ## Description
 The Sanc't Empire is completely eradicated by Armagana.
 # The Final Day of Overnn
 ## Planes
-Overnn
+[Overnn]
 ## Factions
-Armagana
+[Armagana]
 ## Description
 Armagana is the only remaining entity in Overnn.
