@@ -5,6 +5,8 @@ Techa is a militia composed of Sanc't refugees, mercenaries, and formerly displa
 [image:TechaFlagSquare.png]
 ## Population
 Approx. 5 million
+## Founded
+[ThePre-RecognitionAge]
 ## Government
 Militia Dictatorship
 ## Capital
@@ -24,7 +26,7 @@ Object Printing (Inherited)
 ## Peak Agriculture Technology
 Compact Vertical Farming (Inherited)
 # Founding
-Techa was founded by [Melior] following the destruction of [Farin]. Initially the other members consisted of several Sanc't engineers, who had been convinced to help him repurpose his Fariner technology for use against Armagana. Together they built Techa into a start-up under the Sanc't Empire, collecting funding from investors which they used to retool the Fariner technology and become self-sufficient. Melior was uninterested in the society and politics of Sanc't, which eventually lead to him declaring Techa to be an independent nation. He left the territory of the Sanc't Empire and took the Fariner technology with him, refusing to pay the companies that had made investments in Techa. This caused Sanc't to label Techa as a piracy faction, which made it difficult for Melior to coordinate with them in resolving the threat Armagana posed.
+Techa was founded by [Melior] during [ThePre-RecognitionAge] following the destruction of [Farin]. Initially the other members consisted of several [Sanc't] engineers, who had been convinced to help him repurpose his Fariner technology for use against [Armagana]. Together they built Techa into a start-up under the Sanc't Empire, collecting funding from investors which they used to retool the Fariner technology and become self-sufficient. Melior was uninterested in the society and politics of Sanc't, which eventually lead to him declaring Techa to be an independent nation. He left the territory of the Sanc't Empire and took the Fariner technology with him, refusing to pay the companies that had made investments in Techa. This caused Sanc't to label Techa as a piracy faction, which made it difficult for Melior to coordinate with them in resolving the threat Armagana posed.
 # Government & Politics
 ## Law
 ## Foreign Relations and Military
