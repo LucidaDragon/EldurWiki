@@ -14,7 +14,7 @@ Militia Dictatorship
 ## Militarization
 30%
 ## Peak Offensive Technology
-Glassing Beam, Rift Cannon (Inherited)
+Rift Cannon, Glassing Beam (Inherited)
 ## Peak Defensive Technology
 T-Metal Composite Armour, Energy Shielding (Inherited)
 ## Peak Transport Technology
