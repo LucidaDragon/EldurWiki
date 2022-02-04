@@ -1,0 +1,13 @@
+(Article Description)
+
+# [template:article_name]
+@Type box
+[image:InfoboxImage.png]
+## Infobox Section 1
+(Infobox Info 1)
+## Infobox Section 2
+(Infobox Info 2)
+# Section 1
+(Section 1 Content)
+# Section 2
+(Section 2 Content)
