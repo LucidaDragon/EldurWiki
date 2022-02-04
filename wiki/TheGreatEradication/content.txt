@@ -1,0 +1,70 @@
+# Vonn Rebellion Begins
+## Planes
+[Rangar]
+## Factions
+[UnifiedVonn]
+## Description
+A group of mages and war veterans unite to rebel against the kings.
+# King of the Dreamers Voluntarily Dethroned
+## Planes
+[Rangar]
+## Factions
+[KingdomOfTheDreamers], [UnifiedVonn]
+## Description
+The King of the Dreamers voluntarily relinquishes his soul bone to the rebels and dies.
+# King of the Runes Killed
+## Planes
+[Rangar]
+## Factions
+[KingdomOfTheRunes], [UnifiedVonn]
+## Description
+The rebels steal the soul bone of the King of the Runes, who dies shortly after.
+# Dragons Harass Rebellion
+## Planes
+[Rangar]
+## Factions
+[Nix'sDraconicReign], [UnifiedVonn]
+## Description
+[Nix] sends dragons to periodically attack the rebellion's infrastructure.
+# King of the Voices Killed
+## Planes
+[Rangar]
+## Factions
+[KingdomOfTheVoices], [UnifiedVonn]
+## Description
+The rebel steal the soul bone of the King of the Voices, killing him in the process.
+# Kingdom of the Voices Collapses
+## Planes
+[Rangar]
+## Factions
+[KingdomOfTheVoices]
+## Description
+The Kingdom of the Voices collapses with no successor to the throne.
+# King of the Circles Voluntarily Dethroned
+## Planes
+[Rangar]
+## Factions
+[KingdomOfTheCircles], [UnifiedVonn]
+## Description
+The King of the Circles voluntarily relinquishes his soul bone to the rebels and dies.
+# Kingdom of the Wands Rises Again
+## Planes
+[Rangar]
+## Factions
+[KingdomOfTheWands], [UnifiedVonn]
+## Description
+The Unified Vonn succeed in freeing the Kingdom of the Wands from its imprisonment.
+# Vonn Attack the Valley of Dragons
+## Planes
+[Rangar]
+## Factions
+[Nix'sDraconicReign], [UnifiedVonn]
+## Description
+The Unified Vonn lead an attack against [Nix] and the dragons.
+# The Great Eradication
+## Planes
+[Overnn], [Rangar], [Stasis]
+## Factions
+[Nix'sDraconicReign], [UnifiedVonn]
+## Description
+A complex spell, for which both the age and the event are named, is cast that causes [Nix], dragons, and some [Vonn] to be scattered across several [Planes].
