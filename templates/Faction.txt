@@ -5,6 +5,10 @@
 [image:[template:article_name]FlagSquare.png]
 ## Population
 (Approx. number of citizens or group members.)
+## Founded
+(Which age the faction was founded in.)
+## Ended
+(Which age the faction ended in, if applicable.)
 ## Government
 (Type or structure of government or group, if applicable.)
 ## Capital
