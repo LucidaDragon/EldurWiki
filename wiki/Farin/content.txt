@@ -1,0 +1,81 @@
+Farin is an isolated society of former-Vonn that were displaced by the events of [TheGreatEradication]. They became the most technologically advanced faction in Eldur before wiping themselves out in a cataclysmic experimental physics accident.
+
+# Farin
+@Type box
+[image:FarinFlagSquare.png]
+## Population
+Approx. 2 billion
+## Founded
+[TheNewAge]
+## Ended
+[ThePermanentAge]
+## Government
+Academic Federation
+## Capital
+City of Light
+## Militarization
+0.2%
+## Peak Offensive Technology
+Interruptor Blade
+## Peak Defensive Technology
+Energy Shielding
+## Peak Transport Technology
+Gravitic-Maglev Trains
+## Peak Manufacturing Technology
+Object Printing
+## Peak Agriculture Technology
+Compact Vertical Farming
+# Founding
+Farin was created by a group of [Vonn] who were accidentally caught in the spell that ended [TheGreatEradication]. During the initial days of Farin the most common cause of death was soul starvation as the former Vonn failed to adapt to the increased distance to the [Conduit]. Soon after the event, four surviving elders came forward claiming to remember the before time. They provided wisdom for the Fariners that felt great uncertainty in the new world they found themselves in and created a common set of moral rules which they transcribed in the Old Decree.
+# Government & Politics
+Fariner society has no official centralized government and instead delegates tasks that would normally be performed by a governing body to smaller organizations, the largest of which is the World Regulatory Consortium.
+## Law
+Laws undergo approval and renewal processes overseen by the World Regulatory Consortium. Laws are selected based on whether they have undergone small scale testing, been peer-reviewed by major civil research organizations, and receive generally positive reception by the people who will be effected by it.
+Law enforcement is provided by local groups of Community Patrons, who are the only individuals with access to Interruptor blades outside of controlled environments. They are held accountable for their actions by the local Municipal Security Council, whos members are elected by the district's population and held accountable by the World Regulatory Consortium.
+## Territory
+While the term Farin can be used to refer to the planet the Fariners live on, a large section of the planet is unpopulated wasteland that the City of Light slowly expand into. Originally, Fariners only lived in a small area that they were able to cultivate crops on, but soon expanded as the technological progress was made that eventually brought about the modern City of Light. The core of the city remained unchanged and eventually became known as the Heritage District.
+# Demographics
+## Ethnicity
+For the majority of their existence Fariners were entirely descended from [Vonn]. This changed during [TheCrossroadsAge] when the Fariners encountered the [Akarii] through the Fariner-Akarii wormhole and began adopting their desirable traits through genetic modification. The percentage of the Fariner population that incorporated Akarii genetics rose throughout the start of [ThePermanentAge] until all Fariners possessed it.
+## Health
+Fariner healthcare is delivered through the Association of Medical Practitioners and moderated by the Biology Research Consortium. Organizations participating in the Biology Research Consortium are required to join the Association of Medical Practitioners if they wish to conduct research on living members of the public.
+Injuries are only considered irreversible if the patient has experienced severe brain damage, as their technological advancements allow them to regrow any appendages or organs from the patients own cells as well as correct minor brain damage through precision beam surgery and neuron replacement.
+Mental health is a key component of Fariner society and it is baked into every aspect of its modern existence. Fariners are expected to help condition their peers to behave in the ways expected by the Old Decree and Manual of Interaction, as well as recognize when someone is acting outside of the norm and refer them to one of the many available therapists for additional conditioning or a medical procedure. In the worst of cases, Community Patrons can force a fellow Fariner to attend therapy or receive a medical procedure to rectify their state of mind.
+## Education
+Fariner education often starts at a young age, with the parents selecting one of the many available institutions they want their child to attend. At the age of twelve a Fariner is allowed to start making their own decisions about what institutions they wished to attended, and would often begin producing good or services of some kind by the age of sixteen. Fariners never fully leave academia, though some choose to leave a structured institution in favor of browsing the Library Technica for their learning material.
+## Languages
+All Fariners are taught to speak, read, and write Fariner Primary, which inherits elements of Common Vonn but is better adapted to the modern living of Fariners. Fariner Primary is the only allowed language for publishing formal papers through the majority of organizations.
+Fariner Secondary, a superset of Fariner Primary, adds additional terminology for loosely defined or undefined concepts which were either removed during the transition from Common Vonn or proposed as additions to Fariner Primary and rejected by the Fariner Language Union. Usage of Fariner Secondary is usually limited to creative works as use in day-to-day conversation is often considered rude because it lacks the precision that the standardized definitions of Fariner Primary provides.
+# Culture
+## Iconography
+### The Library Technica
+The Library Technica is a 550 meter (600 yard) tall pyramid made from [Permium] that was constructed around the Heritage District to serve as both a means of preserving the district as well as creating a centralized hub for all of Farin's information. The Library soon became a kind of open school, free from any of the rules that many of the major institutions imposed on their students. It is also at the center of the City of Light, which meant that it is frequently used as a meeting location for Fariners of all ages. Large pieces of the Library are among the few things that outlasted the Fariner society itself, and it is one of the most notable cultural symbols that represented all of Farin.
+### City of Light
+The City of Light is the one unified city of the Fariners. Its name comes from the fact that each building in the city outside of the Heritage District was built with light-emitting walls. Each building has its own color at the owner's discretion and is often programmed to change slowly throughout the day. Light plays a large role in Fariner culture as a symbol of unity and safety and the city is the biggest source of this association thanks to its history as the birthplace of Fariner society.
+### Fariner Robes
+One of the few forms of self-expression that all Fariners take part in is the color and design of their robes. Each robe often has both cultural associations as well as deeper personal meaning to the wearer, expressed through design decisions such as woven symbols, fold arrangement, and trim shape. Fariner robes are often bright and colorful, with white robes being reserved for events when total objectivity is expected of the wearer.
+## Literature
+### The Old Decree
+The Old Decree was written by the four elders of the first Fariner generation, who claimed to remember the times before their appearance after [TheGreatEradication]. It contained rules on how Fariners should interact with one another, stories of the before time, and anecdotal entries from the elders. The Old Decree soon became one of the most important books in Fariner society, initially used as a source of shared morals and laws before being adapted into the Fariner Manual of Interaction.
+### Fariner Manual of Interaction
+The Fariner Manual of Interaction is a modernization of the Old Decree that adds missing clarifications, translates the Common Vonn to Fariner Primary, and extends the rules to cover interactions of larger populations. Relevant sections of the second edition onward were enacted into law, and the third edition began being taught in schools in place of the Old Decree.
+## Sports
+### Faeretball
+Faeretball is played by two teams on a 16:9 rectangular court. Players attempt to strike other players on the opposing team by throwing weighted balls. Initially each team can only move within their half of the court, however each time a player is struck the available area for the struck player's team decreases while the area for the opposing team increases. The game ends when one team gains total control over the court.
+The dimensions of the court, size of the teams, number and weight of the balls, and the amount of territory each strike changes depends on what level of play is desired. The Global Faeretball Association designates that the world championship should have teams of five play on a 22 by 12.3 meter (72.2 by 40.3 ft) court with seven 6 kilogram (13.2 lb) balls that advance the playable area by 1 meter (3.3 ft).
+Faeretball is often played in Fariner schools as both a means of physical education and recreation. Faeretball is also commonly used to help young Fariners develop control over their [Akarii]-inherited gravity manipulation, usually starting with lighter balls and increasing the weight as their skills improve.
+### Martial Arts
+Martial Arts are a family of sports popularized by their athletic and skill requirements with a large variety of game types.
+#### Unarmed Sparring
+Unarmed Sparring pitches two or more players against each other using nothing but their bodies for offense and defense. Attacking opponents above the shoulders is forbidden by the Unarmed Combative Sporting Association and officially results in the forfeiting of the match for the offending player.
+#### Armed Sparring
+During Armed Sparring, two or more opponents fight with Interruptor blades. Armed Sparring is considered the most dangerous of the Fariner sports because it has the highest rate of near-death accidents. Due to the use of Interruptor blades outside of sports as an implement of peacekeeping, Armed Sparring is heavily regulated by both local Community Patrons and the Armed Combative Sparring Association.
+### Engineered Sporting
+Engineered sports are recreations of other popular Fariner sports where the players are aided by technological enhancements that them or their team have developed.
+#### Engineered Faeretball
+Engineered Faeretball requires players to utilize robotic and biologic enhancements while playing Faeretball. The Engineered Faeretball World Championships requires that teams spend no more than 6 weeks developing their enhancements and forbids reuse of enhancements from previous championships that don't show significant changes or improvements.
+#### Engineered Martial Arts
+Unarmed Engineered Martial Arts allows players to create and use special movement and defensive enhancements of any kind and often involves sparring while wearing robotic exoskeletons of varying size and weight class. Armed Engineered Martial Arts does not exist in any official capacity due to the safety concerns of allowing enhanced individuals to wield scaled-up Interruptor blades.
+# Rift Technology and the End of Farin
+Rift Technology, often referred to colloquially as "Rift Tech", is a form of faster-than-light travel that Fariners discovered by studying the data extracted from the Fariner-Akarii wormhole before it closed. Rift Tech remained largely theoretical until several breakthroughs were made that allowed for building-sized objects to be moved through the rift. Several smaller scale and unmanned experiments were conducted before the historic first manned rift traversal, with [Melior] as the pilot.
+The larger scale of the manned experiment called for more energy than all of the previous experiments, however the model that the Fariners were using to determine how much energy was required had a fatal flaw that called for far too much energy to be put into the system. This meant that the rift went into an overcharged state that primed it to release all of its energy upon closing. This sudden explosion of energy vaporized the planet of Farin and stranded Melior in [Overnn], where he later went on to found [Techa].
