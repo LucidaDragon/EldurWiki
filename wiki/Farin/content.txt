@@ -1,4 +1,4 @@
-Farin is an isolated society of former-Vonn that were displaced by the events of [TheGreatEradication]. They became the most technologically advanced faction in Eldur before wiping themselves out in a cataclysmic experimental physics accident.
+Farin is an isolated society of former-[Vonn] that were displaced by the events of [TheGreatEradication]. They became the most technologically advanced faction in Eldur before wiping themselves out in a cataclysmic experimental physics accident.
 
 # Farin
 @Type box
