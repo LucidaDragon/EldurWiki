@@ -3,6 +3,8 @@ Nix is the pure draconic god of destruction. He appears to be similar to the dra
 # Nix
 @Type box
 [image:Nix.png]
+## Height
+8.1 meters (26.6 feet)
 ## Born
 [TheBirthOfNix]
 ## Died

@@ -3,6 +3,8 @@ Godith is the pure draconic goddess of creation. She is the mother of all the dr
 # Godith
 @Type box
 [image:Godith.png]
+## Height
+22.6 meters (74.1 feet)
 ## Born
 Unknown
 ## Died

@@ -3,6 +3,8 @@
 # [template:article_name]
 @Type box
 [image:[template:article_name].png]
+## Height
+(Height in meters (and feet).)
 ## Born
 (Link to the age they were born in.)
 ## Died

@@ -3,6 +3,8 @@ Willseeker is a mortal dragon who was possessed by the soul of [Nix] at a young 
 # Willseeker
 @Type box
 [image:Willseeker.png]
+## Height
+3.6 meters (11.8 feet)
 ## Born
 [TheEnlightenmentAge]
 ## Died

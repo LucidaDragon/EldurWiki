@@ -3,6 +3,8 @@ Jade is the minor draconic goddess of the liminal plane.
 # Jade
 @Type box
 [image:Jade.png]
+## Height
+2.7 meters (8.9 feet)
 ## Born
 [TheBirthOfDragons]
 ## Died

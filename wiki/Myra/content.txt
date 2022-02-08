@@ -3,6 +3,8 @@ Myra is a royal mortal dragon who was spared from death and raised by [Willseeke
 # Myra
 @Type box
 [image:Myra.png]
+## Height
+2.3 meters (7.5 feet)
 ## Born
 [ThePermanentAge]
 ## Parents
