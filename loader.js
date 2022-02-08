@@ -251,9 +251,9 @@ async function LoadParagraphs(at, paragraphs, toc, headerDepth, address, usePTag
 					}
 					else if (name.toLowerCase().startsWith("ext:"))
 					{
-						let parts = name.split(':')
-						if (parts.length < 3) parts.push("")
-						if (parts.length > 3) for (let j = 3; j < parts.length; j++) parts[2] += `:${parts[j]}`
+						let parts = name.split(':');
+						if (parts.length < 3) parts.push("");
+						if (parts.length > 3) for (let j = 3; j < parts.length; j++) parts[2] += `:${parts[j]}`;
 						elements.push(CreateLink(parts[2], parts[1], true));
 					}
 					else if (name.toLowerCase().startsWith("sub:"))
@@ -589,13 +589,33 @@ async function LoadPageObject(at, content)
 	}
 }
 
-async function LoadContent(at)
+async function LoadDefaultContent(at, excludePageSource)
 {
+	let header = document.createElement("div");
+	header.className = "header";
+
 	let container = document.createElement("div");
 	container.className = "container";
 
 	let sidebar = document.createElement("div");
 	sidebar.className = "sidebar";
+
+	let searchForm = document.createElement("form");
+	searchForm.action = `${WikiPath}/wiki/search.html`;
+	searchForm.method = "GET";
+	searchForm.className = "search_form";
+	
+	let searchBox = document.createElement("input");
+	searchBox.className = "search_box";
+	searchBox.placeholder = "Search";
+	searchBox.name = "q";
+	searchBox.type = "text";
+
+	let searchButton = document.createElement("input");
+	searchButton.className = "search_button";
+	searchButton.style.backgroundImage = `url(${WikiPath}/styles/search.svg)`;
+	searchButton.type = "submit";
+	searchButton.value = "Go";
 
 	let article = document.createElement("div");
 	article.className = "article";
@@ -608,22 +628,29 @@ async function LoadContent(at)
 	let footer = document.createElement("div");
 	footer.className = "footer";
 
-	let viewTextSource = document.createElement("a");
-	viewTextSource.innerText = "View Text Source";
-	viewTextSource.href = "./?viewsource=text";
+	if (!excludePageSource)
+	{
+		let viewTextSource = document.createElement("a");
+		viewTextSource.innerText = "View Text Source";
+		viewTextSource.href = "./?viewsource=text";
 
-	let viewJSONSource = document.createElement("a");
-	viewJSONSource.innerText = "View JSON Source";
-	viewJSONSource.href = "./?viewsource=json";
+		let viewJSONSource = document.createElement("a");
+		viewJSONSource.innerText = "View JSON Source";
+		viewJSONSource.href = "./?viewsource=json";
 
-	footer.appendChild(viewTextSource);
-	footer.appendChild(viewJSONSource);
+		footer.appendChild(viewTextSource);
+		footer.appendChild(viewJSONSource);
+	}
+
 	sidebar.appendChild(logo);
+	searchForm.appendChild(searchBox);
+	searchForm.appendChild(searchButton);
+	header.appendChild(searchForm);
 	container.appendChild(sidebar);
+	container.appendChild(header);
 	container.appendChild(article);
 	container.appendChild(footer);
 	at.appendChild(container);
-	at = article;
 
 	await RequestSidebar(async function(sidebarContent)
 	{
@@ -641,8 +668,15 @@ async function LoadContent(at)
 		await LoadParagraphs(sidebar, sidebarContent, undefined, undefined, undefined, false);
 	}, function(code)
 	{
-		sidebar.innerText = `An error occured while loading the sidebar. (${code})`
+		sidebar.innerText = `An error occured while loading the sidebar. (${code})`;
 	});
+
+	return article;
+}
+
+async function LoadContent(at)
+{
+	at = await LoadDefaultContent(at);
 
 	await RequestContent(async function(content)
 	{
@@ -650,7 +684,7 @@ async function LoadContent(at)
 	},
 	function(code)
 	{
-		at.innerText = `An error occured while loading the page. (${code})`
+		at.innerText = `An error occured while loading the page. (${code})`;
 	});
 }
 
@@ -665,6 +699,13 @@ async function Load()
 
 document.addEventListener("DOMContentLoaded", function()
 {
-	wikipage = {};
-	Load();
+	try
+	{
+		LoaderLibraryMode;
+	}
+	catch
+	{
+		wikipage = {};
+		Load();
+	}
 });

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Search</title>
+	<script>LoaderLibraryMode = true;</script>
+	<script src="/EldurWiki/loader.js"></script>
+	<script>
+		ProcessQueue = [];
+		Articles = {};
+		ActiveLoads = 0;
+		NoResultsNotice = null;
+		ContentArea = null;
+
+		async function TryLoadContentFile(source, onContentReceived, onError)
+		{
+			await GetRequest(`${source}.txt`, async function(content)
+			{
+				await onContentReceived(BuildTextTree(content));
+			},
+			async function(code)
+			{
+				await GetRequest(`${source}.json`, onContentReceived, onError)
+			}, "text");
+		}
+
+		function TryLoadArticle(article, onSuccess, onError)
+		{
+			Articles[article] = null;
+			ActiveLoads += 1;
+			RequestContent(function(content)
+			{
+				Articles[article] = content;
+				ActiveLoads -= 1;
+				onSuccess(article);
+			},
+			function(code)
+			{
+				ActiveLoads -= 1;
+				onError(article);
+			}, `./${article}`);
+		}
+
+		function TryLoadSidebar(onSuccess, onError)
+		{
+			ActiveLoads += 1;
+			Articles["@sidebar"] = null;
+			TryLoadContentFile("./sidebar", function(content)
+			{
+				Articles["@sidebar"] = content;
+				ActiveLoads -= 1;
+				onSuccess("@sidebar");
+			}, function()
+			{
+				ActiveLoads -= 1;
+				onError("@sidebar");
+			});
+		}
+
+		function GetSectionText(section)
+		{
+			let links = [];
+			let text = [];
+
+			if (typeof section === "string" || section instanceof String)
+			{
+				let inLink = false;
+				let start = 0;
+
+				for (let i = 0; i < section.length; i++)
+				{
+					if (inLink)
+					{
+						if (section[i] === "]")
+						{
+							let name = section.substr(start, i - start).trim();
+							text.push(`[${name}]`);
+
+							if (name.length > 0)
+							{
+								if (name.includes(":"))
+								{
+									let parts = name.split(":");
+									for (let j = 2; j < parts.length; j++) parts[1] += `:${parts[j]}`;
+									if (parts[1].length > 0) links.push({ type: parts[0], to: parts[1] });
+								}
+								else
+								{
+									links.push({ type: "", to: name });
+								}
+							}
+
+							start = i + 1;
+							inLink = false;
+						}
+					}
+					else
+					{
+						if (section[i] === "[")
+						{
+							const str = section.substr(start, i - start);
+							if (str !== "") text.push(str);
+
+							start = i + 1;
+							inLink = true;
+						}
+						else if (i === section.length - 1)
+						{
+							const str = section.substr(start, (i - start) + 1);
+							if (str !== "") text.push(str);
+						}
+					}
+				}
+			}
+			else if (Array.isArray(section))
+			{
+				for (let i = 0; i < section.length; i++)
+				{
+					const info = GetSectionText(section[i]);
+					links = links.concat(info.links);
+					text = text.concat(info.text);
+				}
+			}
+			else
+			{
+				if (section.Type === undefined) section.Type = "text";
+
+				if (section.Type === "text")
+				{
+					if (section.Header !== undefined)
+					{
+						text.push(section.Header);
+					}
+					
+					if (section.Sections !== undefined)
+					{
+						const info = GetSectionText(section.Sections);
+						links = links.concat(info.links);
+						text = text.concat(info.text);
+					}
+				}
+			}
+
+			return { links: links, text: text };
+		}
+
+		function GetContentText(content)
+		{
+			let links = [];
+			let text = [];
+
+			if (content.Description !== undefined)
+			{
+				const info = GetSectionText(content.Description);
+				links = links.concat(info.links);
+				text = text.concat(info.text);
+			}
+
+			if (content.Sections !== undefined)
+			{
+				const info = GetSectionText(content.Sections);
+				links = links.concat(info.links);
+				text = text.concat(info.text);
+			}
+
+			return { links: links, text: text };
+		}
+
+		function OnArticleDownloaded(article)
+		{
+			ProcessQueue.push(article);
+			ProcessArticles();
+		}
+
+		function OnArticleFailed()
+		{
+			ProcessArticles();
+		}
+
+		function CreateArticleEntry(article, description, maxDescriptionLength)
+		{
+			if (maxDescriptionLength === undefined) maxDescriptionLength = 200;
+
+			const score = GetQueryScore(article, GetQuery());
+
+			if (score < 0) return;
+
+			NoResultsNotice.style.display = "none";
+
+			const group = document.createElement("div");
+			const heading = document.createElement("h2");
+			const link = CreateLink(`./${article}/`, article);
+			const rankSection = document.createElement("input");
+			rankSection.type = "hidden";
+			rankSection.className = "rank";
+			rankSection.style.display = "none";
+			rankSection.value = score;
+			const body = document.createElement("p");
+			body.innerText = (description.length > maxDescriptionLength) ? `${description.substr(0, maxDescriptionLength - 3)}...` : description;
+
+			heading.appendChild(link);
+			group.appendChild(heading);
+			group.appendChild(rankSection);
+			group.appendChild(body);
+
+			ContentArea.appendChild(group);
+
+			function GetEntryScore(entry)
+			{
+				entry = entry.getElementsByClassName("rank")[0];
+				return entry === undefined ? -1 : parseInt(entry.value);
+			}
+
+			[...ContentArea.children]
+				.sort((a, b) => GetEntryScore(a) < GetEntryScore(b) ? 1 : -1)
+				.forEach(node => ContentArea.appendChild(node));
+		}
+
+		function GetQueryScore(article, query)
+		{
+			const compactName = article.toUpperCase();
+			const name = AddCamelSpaces(article).toUpperCase();
+
+			if (name === query || compactName === query) window.location = `./${article}/`;
+
+			const content = GetContentText(Articles[article]);
+
+			let score = -1;
+			const parts = query.split(" ");
+
+			const body = content.text.join(" ").toUpperCase();
+
+			for (let i = 0; i < parts.length; i++)
+			{
+				const part = parts[i].trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+				if (part.length > 0)
+				{
+					score += (name.match(part) || []).length * 100;
+					score += (name.match(`\b${part}\b`) || []).length * 100;
+					score += (body.match(part) || []).length;
+					score += (body.match(`\b${part}\b`) || []).length;
+				}
+			}
+
+			return score;
+		}
+
+		function ProcessArticle(article)
+		{
+			const content = Articles[article];
+
+			if (content)
+			{
+				const info = GetContentText(content);
+				
+				for (let i = 0; i < info.links.length; i++)
+				{
+					const link = info.links[i];
+
+					if ((link.type === "" || link.type === "sub") && Articles[link.to] === undefined)
+					{
+						TryLoadArticle(link.to, OnArticleDownloaded, OnArticleFailed);
+					}
+				}
+
+				if (article !== "@sidebar" && article !== "")
+				{
+					CreateArticleEntry(article, info.text.join(" "));
+				}
+			}
+		}
+
+		function ProcessArticles()
+		{
+			while (ProcessQueue.length > 0 && ActiveLoads === 0) ProcessArticle(ProcessQueue.shift());
+
+			if (ProcessQueue.length === 0 && ActiveLoads === 0) SetSearching(false);
+		}
+
+		function GetQuery()
+		{
+			const query = new URLSearchParams(window.location.search).get("q");
+			if (!query) window.location = "./";
+			const box = document.getElementsByClassName("search_box")[0];
+			if (box) box.value = query;
+			return query.toUpperCase();
+		}
+
+		function SetSearching(value)
+		{
+			const btn = document.getElementsByClassName("search_button")[0];
+
+			if (value)
+			{
+				NoResultsNotice.innerText = "Searching...";
+				if (btn)
+				{
+					btn.style.backgroundImage = `url(${WikiPath}/styles/spinner.svg)`;
+					btn.classList.add("spinner");
+				}
+			}
+			else
+			{
+				NoResultsNotice.innerText = "No results found.";
+				if (btn)
+				{
+					btn.classList.remove("spinner");
+					btn.style.backgroundImage = `url(${WikiPath}/styles/search.svg)`;
+				}
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", async function()
+		{
+			GetQuery();
+			wikipage = { name: "Search" };
+			LoadIcon();
+			LoadStyles();
+			
+			ContentArea = await LoadDefaultContent(document.body, true);
+			GetQuery();
+
+			NoResultsNotice = document.createElement("p");
+			SetSearching(true);
+			ContentArea.appendChild(NoResultsNotice);
+
+			TryLoadSidebar(OnArticleDownloaded, OnArticleFailed);
+			TryLoadArticle("", OnArticleDownloaded, OnArticleFailed);
+		});
+	</script>
+</head>
+
+<body><noscript>JavaScript is required to load this page.</noscript></body>
+
+</html>
