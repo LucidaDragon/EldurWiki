@@ -2,5 +2,5 @@
 [Planes]
 [UniversalTimeline]
 [Category$Factions]
-[Category$Dragons]
+[Category$Characters]
 [Category$Magic]
