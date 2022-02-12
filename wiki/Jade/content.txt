@@ -1,4 +1,4 @@
-Jade is the minor draconic goddess of the liminal plane.
+Jade is the minor draconic goddess of the [Liminal] plane.
 
 # Jade
 @Type box
